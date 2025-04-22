@@ -1,0 +1,56 @@
+import sys
+import tty
+import termios
+import os
+
+# 장면 텍스트
+scene_texts = [
+    "🌟 나의 꿈",
+    "ㅓㄴ오만옴ㅁ놔\n ㅎㅇㅎㅇㅎㅇㅎ",
+    "🎨 그림을 그리는 나",
+    "🚴 자전거 타기",
+    "🎤 발표 연습",
+    "🏁 끝! 수고했어요"
+]
+
+current_scene = 0
+total_scenes = len(scene_texts)
+
+def clear():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+def get_key():
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    try:
+        tty.setraw(sys.stdin.fileno())
+        ch1 = sys.stdin.read(1)
+        if ch1 == '\x1b':  # 방향키는 3글자 (\x1b[A)
+            ch2 = sys.stdin.read(1)
+            ch3 = sys.stdin.read(1)
+            return ch1 + ch2 + ch3
+        else:
+            return ch1
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
+
+# 첫 화면 출력
+clear()
+print(scene_texts[current_scene])
+print("\n← 오른쪽(▶) / 왼쪽(◀)  q 누르면 종료")
+
+while True:
+    key = get_key()
+
+    if key == '\x1b[C':  # → 방향키
+        if current_scene < total_scenes - 1:
+            current_scene += 1
+    elif key == '\x1b[D':  # ← 방향키
+        if current_scene > 0:
+            current_scene -= 1
+    elif key.lower() == 'q':
+        break
+
+    clear()
+    print(scene_texts[current_scene])
+    print("\n← 오른쪽(▶) / 왼쪽(◀) 화살표로 장면 이동, q 누르면 종료")
