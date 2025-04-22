@@ -1,0 +1,28 @@
+scene_texts = [
+    "I have a dream(?) 나의 꿈 contt",
+    "장면 test2 clear",
+    "enter \n enter test clear",
+    "riding a bike test2 clear",
+    "int /t clear",
+    "done\n done\n done"
+]
+#window test clear??
+current_scene = 0
+total_scenes = len(scene_texts)
+
+def clear():
+    print("\033[H\033[J", end="")  # 리플릿에서 터미널 클리어 비슷
+
+while True:
+    clear()
+    print(scene_texts[current_scene])
+    print("\n[n] 다음 / [p] 이전 / [q] 종료")
+
+    key = input("입력: ").lower().strip()
+
+    if key == 'n' and current_scene < total_scenes - 1:
+        current_scene += 1
+    elif key == 'p' and current_scene > 0:
+        current_scene -= 1
+    elif key == 'q':
+        break
