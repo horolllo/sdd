@@ -6,11 +6,11 @@ import os
 # 장면 텍스트
 scene_texts = [
     "🌟 나의 꿈",
-    "ㅓㄴ오만옴ㅁ놔\n ㅎㅇㅎㅇㅎㅇㅎ",
-    "🎨 그림을 그리는 나",
-    "🚴 자전거 타기",
-    "🎤 발표 연습",
-    "🏁 끝! 수고했어요"
+    "장면test2 clear",
+    "enter \n enter test clear",
+    "riding a bike test2 clear",
+    "int /t clear",
+    "done\n done\n done"
 ]
 
 current_scene = 0
