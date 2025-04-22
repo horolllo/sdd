@@ -5,7 +5,7 @@ import os
 
 # 장면 텍스트
 scene_texts = [
-    "🌟 나의 꿈",
+    "I have a dream(?)나의 꿈 contt",
     "장면test2 clear",
     "enter \n enter test clear",
     "riding a bike test2 clear",
