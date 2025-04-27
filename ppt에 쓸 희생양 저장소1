@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main(){
+
+printf("프로그래머란?")
+printf("프로그래머가 되기 위한 계획")
+printf("프로그래머가 되기위한 다짐")
+
+
+return 0;
+}
